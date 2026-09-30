@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Winter Arc 91</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f6fb;--cd:#fff;--tx:#141a2a;--mu:#6b7488;--ac:#2f6df6;--ok:#12a36b;--bd:#dfe4ef;--wn:#fff1c9;--wt:#6a4b00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1119;--cd:#161c29;--tx:#e8ecf5;--mu:#8b95ab;--ac:#5b8cff;--ok:#2ecf95;--bd:#262f42;--wn:#3a2f10;--wt:#ffd98a}}
+:root[data-theme="dark"]{--bg:#0d1119;--cd:#161c29;--tx:#e8ecf5;--mu:#8b95ab;--ac:#5b8cff;--ok:#2ecf95;--bd:#262f42;--wn:#3a2f10;--wt:#ffd98a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:78px}
+main{max-width:760px;margin:0 auto;padding:12px}
+.cd{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:12px}
+h1{font-size:19px;margin:0}h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--mu);margin:0 0 8px}
+.mu{color:var(--mu);font-size:13px}.r{display:flex;gap:8px;align-items:center;justify-content:space-between}
+button,select,input[type=number],input[type=date],textarea{background:var(--cd);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:8px 12px;font:inherit}
+button{cursor:pointer}button.p{background:var(--ac);border-color:var(--ac);color:#fff}
+textarea{width:100%;min-height:64px;resize:vertical}
+.bar{height:8px;background:var(--bd);border-radius:6px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:var(--ok);transition:width .2s}
+.it{display:flex;gap:10px;align-items:flex-start;padding:10px 2px;border-top:1px solid var(--bd);cursor:pointer}
+.it:first-child{border-top:0}.it input{width:22px;height:22px;flex:none;margin-top:1px;accent-color:var(--ok)}
+.it b{font-weight:600}.it.d b{text-decoration:line-through;color:var(--mu)}
+.wn{background:var(--wn);color:var(--wt);border-radius:10px;padding:8px 10px;font-size:13px;margin-bottom:10px}
+.st{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}.st b{font-size:22px;display:block}
+canvas{width:100%;display:block}
+.sc{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--bd);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:6px 8px;border-bottom:1px solid var(--bd);text-align:left;vertical-align:top}
+.tk th,.tk td{text-align:center;padding:5px 4px;white-space:nowrap;font-size:12px}
+.tk th:first-child,.tk td:first-child{position:sticky;left:0;background:var(--cd);text-align:left;z-index:1}
+.tk input{width:18px;height:18px;accent-color:var(--ok)}
+.tk tr.ex td{background:var(--wn)}.tk tr.su td{opacity:.85}.tk tr.cu td:first-child{color:var(--ac);font-weight:700}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.seg button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.hm{display:grid;grid-template-columns:repeat(13,1fr);gap:3px;margin-top:8px}
+.hm div{aspect-ratio:1;border-radius:4px;border:1px solid var(--bd);font-size:9px;display:flex;align-items:center;justify-content:center;color:var(--mu);cursor:pointer}
+details{border-top:1px solid var(--bd);padding:8px 0}details:first-of-type{border-top:0}
+summary{cursor:pointer;font-weight:600;padding:4px 0}details ul,details ol{margin:6px 0;padding-left:20px}details li{margin:2px 0}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--cd);border-top:1px solid var(--bd);display:flex;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav button{flex:1;border:0;border-radius:0;background:none;padding:10px 2px;font-size:11px;color:var(--mu)}
+nav button span{display:block;font-size:19px}nav button.on{color:var(--ac);font-weight:700}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:6px}
+@media (min-width:700px){body{font-size:16px}main{padding:18px}}
+</style></head><body>
+<main>
+<div class="cd r"><div><h1>❄️ Winter Arc</h1><div class="mu">91 din. No excuses. Sirf discipline.</div></div><div><button id="th">◐</button></div></div>
+<section id="v0"></section><section id="v1" hidden></section><section id="v2" hidden></section><section id="v3" hidden></section><section id="v4" hidden></section>
+</main>
+<nav id="nv"></nav>
+<script>
+const $=q=>document.querySelector(q);
+let S={start:'2026-10-01',d:{},n:{},m:{},rv:{},th:''};
+try{Object.assign(S,JSON.parse(localStorage.getItem('wa2')||'{}'))}catch(e){}
+const sv=()=>{try{localStorage.setItem('wa2',JSON.stringify(S))}catch(e){}};
+const EXAM=[1,3,5,6],dd=d=>new Date(new Date(S.start+'T00:00:00').getTime()+(d-1)*864e5);
+const today=()=>Math.min(91,Math.max(1,Math.floor((new Date().setHours(0,0,0,0)-dd(1))/864e5)+1));
+const SPL=['Chest + Triceps + Forearm','Back + Biceps + Shoulders','Legs + Abs'];
+const EX=[[["Flat bench press 4x8","Incline DB press 4x10","Cable fly 3x12","Push-up burnout","Close-grip bench 3x10","Rope pushdown 3x12","Overhead DB extension 3x12","Wrist curls 3x15","Reverse wrist curls 3x15","Farmer walk 3x40s"],["Incline bench 4x8","Flat DB press 4x10","Pec deck 3x12","Dips 3xmax","Skull crushers 3x10","Single-arm pushdown 3x12","Diamond push-ups","Hammer wrist curls 3x15","Plate pinch 3x30s","Dead hang 3xmax"]],
+[["Pull-ups 4xmax","Barbell row 4x8","Lat pulldown 3x10","Seated cable row 3x12","Barbell curl 3x10","Incline DB curl 3x12","Overhead press 4x8","Lateral raise 4x15","Rear delt fly 3x15","Face pull 3x15"],["Deadlift 4x5","Chin-ups 3xmax","One-arm DB row 4x10","Straight-arm pulldown 3x12","Hammer curl 3x12","Preacher curl 3x10","DB shoulder press 4x10","Front raise 3x12","Reverse pec deck 3x15","Shrugs 3x15"]],
+[["Back squat 4x8","Leg press 4x12","Romanian deadlift 3x10","Walking lunges 3x20","Leg curl 3x12","Calf raise 4x20","Hanging leg raise 3x15","Cable crunch 3x15","Plank 3x60s","Russian twist 3x30"],["Front squat 4x8","Bulgarian split squat 3x10","Hip thrust 4x10","Leg extension 3x15","Seated leg curl 3x12","Seated calf raise 4x20","Ab wheel 3x12","Decline crunch 3x20","Side plank 3x40s","Mountain climbers 3x40s"]]];
+const MODS=[[1,7,'Python, NumPy, Pandas, Matplotlib'],[8,11,'SQL / MySQL'],[12,16,'Statistics, probability, linear algebra'],[17,19,'R + Hadoop overview'],[20,21,'EDA + feature engineering'],[22,27,'Supervised ML (regression, KNN, SVM, trees, boosting, metrics)'],[28,30,'Unsupervised ML + PCA'],[31,33,'PROJECT 1: churn / price prediction + Streamlit + README'],[34,37,'AI, neural nets, deep learning (Keras, CNN)'],[38,40,'NLP + sentiment analysis'],[41,44,'PROJECT 2: NLP sentiment or image classifier + app'],[45,45,'Final test + GitHub + resume']];
+function info(d){const dw=dd(d).getDay(),rest=dw===0,t=rest?0:[0,0,1,2,0,1,2][dw],wk=Math.floor((d-1)/7);
+ const p=Math.min(300,50+25*Math.floor((d-1)/2)),m=MODS.find(a=>d>=a[0]&&d<=a[1]);
+ const dh=d>45?3.5:EXAM.includes(d)?1.5:rest?8:5.5;
+ return{rest,t,p,dh,gym:rest?null:{n:SPL[t],l:EX[t][wk%2]},ds:d<=45?'Day '+d+'/45 · '+m[2]:'Portfolio: Kaggle, Project 3, SQL, interview prep',
+ ph:d<=45?'Phase 1 · DS course + 2 projects':d<=60?'Phase 2 · Portfolio':'Phase 3 · Interview prep',
+ up:d<=30?'Communication + fluent English (shadowing, speak aloud, vocab)':d<=60?'Critical thinking + public speaking':'Humor, storytelling, personality'}}
+const SH={wake:'Wake',ex:'Dand',med:'Med',gym:'Gym',ds:'DS',gt:'Gtr',ch:'Chess',up:'Upsk',ns:'NoScr',pr:'Prot',wt:'4L',sk:'Skin',pic:'Pic',n1:'F',n2:'Z',n3:'A',n4:'M',n5:'I',gf:'Wifey'};
+function items(d){const i=info(d),x=EXAM.includes(d);return[
+['wake','⏰ Wake up 4:00 AM','No snooze. Paani pi ke uth.'],
+['ex','💪 '+i.p+' dand + '+i.p+' baithak (4:30)','+25 har 2 din, cap 300 (sets me)'],
+['med','🧘 Meditation','10–15 min'],
+['gym',i.rest?'🏃 Sunday (gym band): outdoor run / cycle / ghar cardio 40 min':'🏋️ Gym 5:30 — '+i.gym.n,i.rest?'Muscle rest day':i.gym.l.join(' · ')],
+['ds','💻 Data Science '+i.dh+' hrs',(x?'EXAM DAY: min 1 hr. ':'')+i.ds],
+['gt','🎸 Guitar 45 min','Chords / scales / song'],
+['ch','♟️ Chess 45 min','Puzzles 15 + study 15 + game 15'],
+['up','🧠 Upskilling 1 hr',i.up],
+['ns','📵 Zero scrolling','Reels / shorts / Insta = 0'],
+['pr','🍗 4 protein meals','Har meal me protein'],
+['wt','💧 4+ litre water','Bottle marks'],
+['sk','🧴 Skincare AM + PM','Cleanser, moisturizer, sunscreen'],
+['pic','📸 Pic of the day','Same angle'],
+['n1','🕌 Fajr',''],['n2','🕌 Zuhr',''],['n3','🕌 Asr',''],['n4','🕌 Maghrib',''],['n5','🕌 Isha',''],
+['gf','❤️ Wifey time (phone-free)','Quality time, dil se']]}
+const pct=d=>{const it=items(d),x=S.d[d]||{};return it.filter(a=>x[a[0]]).length/it.length};
+const avg=(a,b)=>{let s=0,k=0;for(let d=a;d<=b;d++){s+=pct(d);k++}return k?s/k:0};
+let cur=today(),tab=0,tm=1,mk=0;
+/* ---------- charts ---------- */
+function prep(c,h){c.style.height=h+'px';const r=c.getBoundingClientRect(),dp=devicePixelRatio||1;c.width=r.width*dp;c.height=h*dp;const x=c.getContext('2d');x.setTransform(dp,0,0,dp,0,0);
+ const cs=getComputedStyle(document.documentElement),g=k=>cs.getPropertyValue(k).trim();return{x,W:r.width,H:h,mu:g('--mu'),bd:g('--bd'),ok:g('--ok'),ac:g('--ac')}}
+function frame(o,L,B,T,R,pc){const{x,W,H,mu,bd}=o;x.font='10px system-ui';x.textBaseline='middle';x.textAlign='right';
+ for(let i=0;i<=4;i++){const y=T+(H-T-B)*(1-i/4);x.strokeStyle=bd;x.beginPath();x.moveTo(L,y);x.lineTo(W-R,y);x.stroke();if(pc){x.fillStyle=mu;x.fillText(i*25,L-4,y)}}}
+function daily(c){const o=prep(c,190),{x,W,H,mu,ok,ac}=o,L=28,B=16,T=6,R=6,pw=W-L-R,ph=H-T-B,px=d=>L+pw*(d-.5)/91,py=v=>T+ph*(1-v);frame(o,L,B,T,R,1);
+ x.setLineDash([4,3]);x.strokeStyle=ok;x.beginPath();x.moveTo(L,py(.8));x.lineTo(W-R,py(.8));x.stroke();x.setLineDash([]);
+ const t=today();x.globalAlpha=.35;x.fillStyle=ok;const bw=Math.max(1,pw/91-1);for(let d=1;d<=t;d++){const q=pct(d);x.fillRect(px(d)-bw/2,py(q),bw,ph*q)}x.globalAlpha=1;
+ x.strokeStyle=ac;x.lineWidth=2;x.beginPath();for(let d=1;d<=t;d++){const v=avg(Math.max(1,d-6),d);d===1?x.moveTo(px(d),py(v)):x.lineTo(px(d),py(v))}x.stroke();x.lineWidth=1;
+ x.fillStyle=mu;x.textAlign='center';x.textBaseline='top';[1,30,60,91].forEach(d=>x.fillText(d,px(d),H-B+3));
+ const a=avg(Math.max(1,t-6),t),b=t>7?avg(Math.max(1,t-13),t-7):null;
+ return'Bars = daily · line = 7-day average · dashed = 80% streak. '+(b===null?'Last 7 days: '+Math.round(a*100)+'%':'Last 7 days '+Math.round(a*100)+'% ('+(a>=b?'▲ +':'▼ ')+Math.round((a-b)*100)+' vs pehle ke 7)')}
+function weekly(c){const o=prep(c,150),{x,W,H,mu,ok}=o,L=28,B=16,T=6,R=6,pw=W-L-R,ph=H-T-B;frame(o,L,B,T,R,1);const t=today();
+ for(let w=0;w<13;w++){const a=w*7+1,b=Math.min(91,a+6),cw=pw/13;x.fillStyle=mu;x.textAlign='center';x.textBaseline='top';x.fillText('W'+(w+1),L+cw*(w+.5),H-B+3);
+  if(a<=t){const v=avg(a,Math.min(b,t));x.fillStyle=ok;x.globalAlpha=.75;x.fillRect(L+cw*w+3,T+ph*(1-v),cw-6,ph*v);x.globalAlpha=1;x.fillStyle=mu;x.textBaseline='bottom';x.fillText(Math.round(v*100),L+cw*(w+.5),T+ph*(1-v)-1)}}}
+const MET=[['Weight (kg)','w'],['Max push-ups','p'],['Chess puzzle rating','c'],['Chord changes / min','g'],['Filler words / 2-min talk (kam = better)','f'],['5 km time, min (kam = better)','r']];
+function line(c,v){const o=prep(c,120),{x,W,H,mu,ac}=o,L=34,B=14,T=8,R=8,pw=W-L-R,ph=H-T-B;frame(o,L,B,T,R,0);
+ const pts=v.map((a,i)=>[i,parseFloat(a)]).filter(a=>!isNaN(a[1]));x.fillStyle=mu;x.textAlign='center';x.textBaseline='top';for(let i=0;i<13;i+=3)x.fillText(i+1,L+pw*i/12,H-B+2);
+ if(!pts.length){x.textBaseline='middle';x.fillText('Log tab me weekly value bharo',W/2,H/2);return}
+ let lo=Math.min(...pts.map(a=>a[1])),hi=Math.max(...pts.map(a=>a[1]));if(lo===hi){lo-=1;hi+=1}const px=i=>L+pw*i/12,py=y=>T+ph*(1-(y-lo)/(hi-lo));
+ x.textAlign='right';x.textBaseline='middle';x.fillText(hi,L-4,T);x.fillText(lo,L-4,T+ph);x.strokeStyle=ac;x.fillStyle=ac;x.lineWidth=2;x.beginPath();pts.forEach((a,k)=>k?x.lineTo(px(a[0]),py(a[1])):x.moveTo(px(a[0]),py(a[1])));x.stroke();x.lineWidth=1;pts.forEach(a=>{x.beginPath();x.arc(px(a[0]),py(a[1]),3,0,7);x.fill()})}
+/* ---------- views ---------- */
+function stats(){let st=0,pf=0,sm=0,n=0,t=today();for(let d=1;d<=91;d++){const q=pct(d);if(q===1)pf++;if(d<=t){sm+=q;n++}}for(let d=t;d>=1;d--){if(pct(d)>=.8)st++;else if(d!==t)break}return[st,pf,n?Math.round(sm/n*100):0]}
+function vToday(){const it=items(cur),x=S.d[cur]||{},p=pct(cur),i=info(cur),t=today(),s=stats();
+ let h='<div class="cd"><div class="r"><button id="pv">←</button><div style="text-align:center"><div style="font-size:22px;font-weight:700">Day '+cur+' / 91</div><div class="mu">'+i.ph+'</div><div class="mu">'+dd(cur).toDateString()+(EXAM.includes(cur)?' · 📝 EXAM':'')+(cur===t?' · Aaj':'')+'</div></div><button id="nx">→</button></div><div class="bar"><i style="width:'+p*100+'%"></i></div><div class="mu" style="margin-top:6px">'+Math.round(p*100)+'% done</div></div><div class="cd">';
+ if(EXAM.includes(cur))h+='<div class="wn">Sem exam day: DS minimum 1 hr, baaki habits pure. Exam ka excuse nahi.</div>';
+ h+=it.map(a=>'<label class="it'+(x[a[0]]?' d':'')+'"><input type="checkbox" data-i="'+a[0]+'"'+(x[a[0]]?' checked':'')+'><span><b>'+a[1]+'</b>'+(a[2]?'<div class="mu">'+a[2]+'</div>':'')+'</span></label>').join('')+'</div>';
+ h+='<div class="cd"><h2>Aaj ka note</h2><textarea id="nt" placeholder="Kya accha gaya, kya miss hua, kal ka fix...">'+(S.n[cur]||'').replace(/</g,'&lt;')+'</textarea></div>';
+ h+='<div class="cd"><h2>Stats</h2><div class="st"><div><b>'+s[0]+'</b><span class="mu">streak (80%+)</span></div><div><b>'+s[1]+'</b><span class="mu">perfect days</span></div><div><b>'+s[2]+'%</b><span class="mu">avg score</span></div></div><div class="hm">';
+ for(let d=1;d<=91;d++){const q=pct(d);h+='<div data-d="'+d+'" style="background:rgba(18,163,107,'+(q?.15+q*.85:0)+');'+(d===t?'outline:2px solid var(--ac);':'')+(q>.6?'color:#fff':'')+'">'+d+'</div>'}
+ $('#v0').innerHTML=h+'</div></div>';
+ $('#pv').onclick=()=>{cur=Math.max(1,cur-1);vToday()};$('#nx').onclick=()=>{cur=Math.min(91,cur+1);vToday()};
+ $('#nt').oninput=e=>{S.n[cur]=e.target.value;sv()};
+ $('#v0').querySelectorAll('.it input').forEach(c=>c.onchange=()=>{(S.d[cur]=S.d[cur]||{})[c.dataset.i]=c.checked;sv();vToday()});
+ $('#v0').querySelectorAll('.hm div').forEach(c=>c.onclick=()=>{cur=+c.dataset.d;vToday();scrollTo(0,0)})}
+function vTrack(){const ids=Object.keys(SH),a=(tm-1)*30+1,b=Math.min(91,tm*30);
+ let h='<div class="cd"><div class="seg">'+[1,2,3].map(m=>'<button class="'+(m===tm?'on':'')+'" data-m="'+m+'">Month '+m+'</button>').join('')+'</div><div class="mu" style="margin-bottom:8px">Table ko side me scroll karo. Peela = exam day. Tick karte hi score badalta hai.</div><div class="sc"><table class="tk"><tr><th>Day</th>'+ids.map(k=>'<th>'+SH[k]+'</th>').join('')+'<th>%</th></tr>';
+ for(let d=a;d<=b;d++){const x=S.d[d]||{},cl=(EXAM.includes(d)?'ex ':'')+(dd(d).getDay()===0?'su ':'')+(d===today()?'cu':'');
+  h+='<tr class="'+cl+'"><td>'+d+' · '+dd(d).toLocaleDateString('en-GB',{day:'2-digit',month:'short'})+'</td>'+ids.map(k=>'<td><input type="checkbox" data-d="'+d+'" data-i="'+k+'"'+(x[k]?' checked':'')+'></td>').join('')+'<td id="sc'+d+'">'+Math.round(pct(d)*100)+'</td></tr>'}
+ $('#v1').innerHTML=h+'</table></div></div>';
+ $('#v1').querySelectorAll('[data-m]').forEach(c=>c.onclick=()=>{tm=+c.dataset.m;vTrack()});
+ $('#v1').querySelectorAll('.tk input').forEach(c=>c.onchange=()=>{const d=+c.dataset.d;(S.d[d]=S.d[d]||{})[c.dataset.i]=c.checked;sv();$('#sc'+d).textContent=Math.round(pct(d)*100)})}
+function vGraph(){let h='<div class="cd"><h2>Daily discipline score</h2><canvas id="c1"></canvas><div class="mu" id="tr" style="margin-top:6px"></div></div><div class="cd"><h2>Weekly average</h2><canvas id="c2"></canvas></div>';
+ MET.forEach((m,i)=>h+='<div class="cd"><h2>'+m[0]+'</h2><canvas id="m'+i+'"></canvas></div>');
+ $('#v2').innerHTML=h;$('#tr').textContent=daily($('#c1'));weekly($('#c2'));MET.forEach((m,i)=>line($('#m'+i),S.m[m[1]]||[]))}
+function vLog(){let h='<div class="cd"><h2>Weekly measurement log</h2><div class="seg" id="mk">'+MET.map((m,i)=>'<button class="'+(i===mk?'on':'')+'" data-k="'+i+'">'+m[0].split(' (')[0]+'</button>').join('')+'</div><div class="mu" style="margin-bottom:8px">'+MET[mk][0]+' — har Sunday ki value bharo (W1 se W13).</div><div class="g">';
+ const v=S.m[MET[mk][1]]||[];for(let i=0;i<13;i++)h+='<label class="mu">W'+(i+1)+'<input type="number" step="any" inputmode="decimal" data-w="'+i+'" value="'+(v[i]??'')+'" style="width:100%"></label>';
+ const w=Math.floor((cur-1)/7);h+='</div></div><div class="cd"><h2>Weekly review — Week '+(w+1)+'</h2><textarea id="rv" placeholder="Win, miss, fix for next week, reward...">'+(S.rv[w]||'').replace(/</g,'&lt;')+'</textarea></div>';
+ h+='<div class="cd"><h2>Settings</h2><div class="mu" style="margin-bottom:6px">Start date (Day 1)</div><input type="date" id="sd" value="'+S.start+'"><div class="seg" style="margin-top:12px"><button id="bk">Backup copy</button><button id="rs">Backup restore</button><button id="rz">Reset all</button></div><div class="mu">Data sirf is phone/browser me save hota hai. Phone badalna ho to Backup copy karke WhatsApp/notes me rakh lo.</div></div>';
+ $('#v4').innerHTML=h;
+ $('#mk').querySelectorAll('button').forEach(b=>b.onclick=()=>{mk=+b.dataset.k;vLog()});
+ $('#v4').querySelectorAll('[data-w]').forEach(i=>i.oninput=()=>{const k=MET[mk][1];S.m[k]=S.m[k]||[];S.m[k][+i.dataset.w]=i.value;sv()});
+ $('#rv').oninput=e=>{S.rv[w]=e.target.value;sv()};
+ $('#sd').onchange=e=>{if(e.target.value){S.start=e.target.value;sv();cur=today()}};
+ $('#bk').onclick=()=>{const t=JSON.stringify(S);(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>alert('Backup copy ho gaya. Kahin paste karke rakh lo.')).catch(()=>prompt('Ye text copy karo:',t))};
+ $('#rs').onclick=()=>{const t=prompt('Backup text paste karo:');if(t){try{S=Object.assign(S,JSON.parse(t));sv();alert('Restore ho gaya');vLog()}catch(e){alert('Galat backup text')}}};
+ $('#rz').onclick=()=>{if(confirm('Saara data delete hoga. Pakka?')){S={start:'2026-10-01',d:{},n:{},m:{},rv:{},th:S.th};sv();cur=today();vLog()}}}
+const TT=[['04:00','Wake, 500 ml paani, wudu'],['04:30','Dand + baithak'],['05:00','Meditation 10–15 min'],['05:10','Fajr (local timetable)'],['05:30','Gym 75–90 min (Sunday: cardio)'],['07:00','Shower, AM skincare, Meal 1'],['07:45','DS block 1 (3 hrs)'],['10:45','Upskilling 1 hr'],['12:30','Meal 2 (heavy protein)'],['15:45','Meal 3 (snack)'],['16:00','DS block 2 (2 hrs)'],['18:00','Guitar 45 min'],['18:45','Maghrib'],['19:00','Chess 45 min'],['19:45','Isha + Meal 4'],['20:30','Wifey time 1 hr (phone-free)'],['21:30','PM skincare, tracker bharo'],['21:45','Sleep']];
+const L=a=>'<ul>'+a.map(t=>'<li>'+t+'</li>').join('')+'</ul>',O=a=>'<ol>'+a.map(t=>'<li>'+t+'</li>').join('')+'</ol>';
+function plan(){const i=info(cur),wk=Math.floor((cur-1)/7);
+ const P=[
+ ['📅 Daily timetable','<table>'+TT.map(r=>'<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td></tr>').join('')+'</table><p class="mu">College timing ke hisaab se adjust karo. Exam days (1,3,5,6): minimum mode — DS 1 hr, guitar/chess/upskilling 20 min, baaki sab. Neend 6 hr se kam ho to DS 5 hr karo, streak mat todo.</p>'],
+ ['🏋️ Gym (aaj ka Day '+cur+')',(i.rest?'<p><b>Sunday: gym band.</b> Park/road par run, cycling, skipping ya ghar par bodyweight circuit 40 min.</p>':'<p><b>'+i.gym.n+'</b> (variant '+'AB'[wk%2]+', har 7 din me badalta hai)</p>'+O(i.gym.l))+'<p class="mu">Split: Mon/Thu Chest+Tri+Forearm · Tue/Fri Back+Bi+Shoulders · Wed/Sat Legs+Abs. Progressive overload: sab sets top rep tak pahunche to weight +2.5 kg (legs +5). Week 4, 8, 12 lighter (1 set kam). Dand-baithak aaj '+i.p+' (cap 300; 150+ ho to 4:15 se shuru karo). Stamina: Sunday W1–2 run 1 min/walk 1 min x15, W3–4 20–25 min jog, W5–6 30 min, W7–8 6x400 m, W9–10 4 km, W11–12 5 km, W13 5 km time trial.</p>'],
+ ['💻 Data Science — 45 din, 2 projects','<p class="mu">Weekday 5.5 hrs, Sunday 8 hrs, exam days 1.5 hrs. Har module ke baad 25 question test (70% se kam = Sunday buffer me dubara). Roz 1 GitHub commit. Solapur University ke 300-hr DS course ke module pe based; apna syllabus alag ho to topics swap karo.</p><table>'+MODS.map(m=>'<tr'+(cur>=m[0]&&cur<=m[1]?' style="background:var(--wn)"':'')+'><td><b>D'+m[0]+(m[1]>m[0]?'–'+m[1]:'')+'</b></td><td>'+m[2]+'</td></tr>').join('')+'</table><p class="mu">Day 46–91 (3.5 hrs): SQL/Python practice, Kaggle, Project 3 (apne software ke data se), interview prep, resume, mock interviews.</p>'],
+ ['♟️ Chess (45 min)','<p>15 puzzles + 15 study + 15 game/analysis. 10+0 ya 15+10, bullet nahi. Har move se pehle blunder check.</p>'+O(['Basics + checkmates','Forks, pins, skewers','Discovered attack, deflection','Openings repertoire','Pawn endings','Rook endings','Mating patterns','Pawn structure, weak squares','Bishop vs knight, activity','Calculation','Apne games ki analysis','Master games','Test + next plan'])+'<p class="mu">Day 1 par apna rating aur puzzle rating Log me likho. Target +150–250.</p>'],
+ ['🎸 Guitar (45 min)','<p>5 warm-up + 15 chords/technique (metronome) + 20 song + 5 theory/ear. Roz chhota > kabhi kabhi lamba.</p>'+O(['Parts, tuning, strumming, Em/Am','E A D C G, chord change drill','Strum patterns, Dm, simple F','Song 1 complete','Barre intro','Barre F/Bm, power chords','Minor pentatonic, hammer-on','Fingerpicking, Song 3','Riff, capo','Full song with intro/solo','Gate hue bajana','Performance prep + record','Live perform'])],
+ ['🧴 Skincare & grooming','<b>AM:</b> cleanser → (vit C optional) → moisturizer → sunscreen SPF 30–50. <b>PM:</b> double cleanse → niacinamide / salicylic (2–3 raat) → moisturizer → lip balm. Exfoliate 1–2x/week, pillow cover har 5–7 din, pimple mat phodo. Naya product 24 hr patch test. Acne serious ho to dermatologist. Haircut har 3–4 hafte, beard trim hafte me 2 baar.'],
+ ['🍗 Protein, paani, neend','<p>Protein 1.6–2 g per kg (70 kg = 112–140 g), 4 meals me ~30–35 g. Eggs, chicken, fish, paneer, dal, soya chunks, curd, milk, chana, sprouts.</p><p><b>4 L paani:</b> 04:00 500 · 05:20 250 · gym 750 · 07:00 400 · 09:45 300 · 12:30 400 · 15:45 400 · 17:30 300 · 19:15 400 · 20:00 300 ml.</p><p>Sleep 9:45 pm. Thakaan ho to 1:30 pm par 20 min nap.</p>'],
+ ['🧠 Upskilling (1 hr)','<p><b>D1–30:</b> English — 15 shadowing + 15 bolna (record) + 15 vocab + 15 padhna.</p><p><b>D31–60:</b> Critical thinking (fallacies, biases, first principles, steelman) + 2-min impromptu speaking.</p><p><b>D61–91:</b> Humor (3 observations → 1 joke), storytelling, shayari, IT club anchoring.</p>'],
+ ['📵 No-scroll aur wifey time','<p>Reels/Shorts apps hatao ya limit 0, grayscale, phone bedroom ke bahar. Allowed: WhatsApp (business), YouTube sirf search karke. Urge aaye to 10 saans + guitar.</p><p>Wifey: roz 1 hr+ phone-free, Sunday 3–4 hr, hafte me 1 chhota surprise.</p>'],
+ ['📜 Rules','<ul><li>2-day rule: ek din miss chalega, do din kabhi nahi.</li><li>Streak = 80%+ din. Perfect = sab tick.</li><li>Raat 9:15 tak tracker bharo, kal ka plan ready.</li><li>80%+ hafte par chhota reward.</li></ul>']];
+ $('#v3').innerHTML='<div class="cd"><h2>Playbook</h2>'+P.map(p=>'<details><summary>'+p[0]+'</summary>'+p[1]+'</details>').join('')+'</div>'}
+const TABS=[['Today','✅',vToday],['Tracker','🗓️',vTrack],['Graphs','📈',vGraph],['Plan','📖',plan],['Log','📝',vLog]];
+function show(n){tab=n;TABS.forEach((t,i)=>{$('#v'+i).hidden=i!==n});$('#nv').querySelectorAll('button').forEach((b,i)=>b.classList.toggle('on',i===n));TABS[n][2]();scrollTo(0,0)}
+$('#nv').innerHTML=TABS.map((t,i)=>'<button data-n="'+i+'"><span>'+t[1]+'</span>'+t[0]+'</button>').join('');
+$('#nv').querySelectorAll('button').forEach(b=>b.onclick=()=>show(+b.dataset.n));
+if(S.th)document.documentElement.dataset.theme=S.th;
+$('#th').onclick=()=>{const c=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'),n=c==='dark'?'light':'dark';document.documentElement.dataset.theme=n;S.th=n;sv();TABS[tab][2]()};
+addEventListener('resize',()=>{if(tab===2)vGraph()});
+show(0);
+</script></body></html>
